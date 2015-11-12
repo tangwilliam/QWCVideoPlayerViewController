@@ -1,6 +1,4 @@
 # QWCVideoPlayerViewController
-iOS VideoPlayer
-
 使用AVPlayer 实现的一个VideoPlayerViewController
 
 主要功能：
