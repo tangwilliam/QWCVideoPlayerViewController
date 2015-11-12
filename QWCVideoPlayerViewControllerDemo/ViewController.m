@@ -22,7 +22,7 @@
 
 - (IBAction)handlePlayVideoButton:(id)sender {
 
-    NSString *url = @"http://www.devqinwei.com/pity.mp4";
+    NSString *url = @"http://www.devqinwei.com/QWCVideoPlayerViewConrollerDemo.mp4";
 //    @"http://v.jxvdy.com/sendfile/w5bgP3A8JgiQQo5l0hvoNGE2H16WbN09X-ONHPq3P3C1BISgf7C-qVs6_c8oaw3zKScO78I--b0BGFBRxlpw13sf2e54QA";
     //@"http://7xjkt1.com2.z0.glb.qiniucdn.com/videos/video1.3gp";
     
