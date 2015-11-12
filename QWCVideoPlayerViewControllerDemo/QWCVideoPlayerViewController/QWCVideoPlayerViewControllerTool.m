@@ -30,10 +30,10 @@
         
         if( hours ){
             
-            string = [NSString stringWithFormat:@"%2ld:%02ld:%02ld", hours,minutes,seconds ];
+            string = [NSString stringWithFormat:@"%2ld:%02ld:%02ld", (long)hours,(long)minutes,(long)seconds ];
         }else{
             
-            string = [NSString stringWithFormat:@"%02ld:%02ld", minutes,seconds ];
+            string = [NSString stringWithFormat:@"%02ld:%02ld", (long)minutes,(long)seconds ];
         }
 
         
