@@ -543,7 +543,7 @@
 
     if ( self.controlViewBottomConstraint.constant < 0 ) {
         
-        [UIView animateWithDuration:0.35f delay:0.0f usingSpringWithDamping:0.8f initialSpringVelocity:0.5f options:0 animations:^{
+        [UIView animateWithDuration:0.35f delay:0.0f usingSpringWithDamping:1.0f initialSpringVelocity:0.5f options:0 animations:^{
             
             self.topBarViewTopConstraint.constant     = 0.0f;
             self.controlViewBottomConstraint.constant = 0.0f;
@@ -569,7 +569,7 @@
     
     if ( self.controlViewBottomConstraint.constant >= 0) {
         
-        [UIView animateWithDuration:0.35f delay:0.0f usingSpringWithDamping:0.8f initialSpringVelocity:0.5f options:0 animations:^{
+        [UIView animateWithDuration:0.35f delay:0.0f usingSpringWithDamping:1.0f initialSpringVelocity:0.5f options:0 animations:^{
             
             self.topBarViewTopConstraint.constant     = -70.0f;
             self.controlViewBottomConstraint.constant = -70.0f;
