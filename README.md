@@ -3,7 +3,7 @@ iOS: 使用AVPlayer 实现的一个VideoPlayerViewController
 
 主要功能：
 1. 视频播放
-2. 支持各方向旋转
+2. 支持viewController自定义的方向旋转（将旋转处理的自定义方法注释去掉）
 3. iPhone 与iPad 均可用
 
 备注：
