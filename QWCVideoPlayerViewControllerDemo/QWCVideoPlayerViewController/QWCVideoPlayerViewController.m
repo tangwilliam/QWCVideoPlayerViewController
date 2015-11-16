@@ -171,7 +171,7 @@
     
     
     // 侦听方向变化
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDeviceOrientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDeviceOrientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
     
     // 侦听屏幕点击
     [self.view addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapScreen:)]];
@@ -360,16 +360,6 @@
 
 #pragma mark - 设备旋转相关
 
-#if __IPHONE_OS_VERSION_MAX_ALLOWED < 90000
--(NSInteger) supportedInterfaceOrientations
-    
-#else
--(UIInterfaceOrientationMask)supportedInterfaceOrientations
-#endif
-{
-    return UIInterfaceOrientationMaskAll;
-}
-
 /**
  *  设置旋转过程是否自己完全控制
  *
@@ -377,58 +367,58 @@
  */
 -(BOOL)shouldAutorotate{
     
-    return NO; // 完全控制旋转过程
+    return YES; // 让系统自动旋转屏幕上的View，只要设置好autoLayout，自动旋转的效果很平滑。且playerView也会根据横竖屏相应的屏幕大小自动调整视频显示尺寸
 }
 
 /**
- *  处理屏幕旋转
+ *  处理屏幕旋转，该代码注释掉，使用ViewController 的autorotate来处理即可
  *
  *  @param notification 附带旋转信息的notification
  */
--(void) handleDeviceOrientationChanged:(NSNotification *)notification{
-    
-    UIDeviceOrientation newOrientation = [[UIDevice currentDevice] orientation];
-    
-    if ( self.currentOrientaion != newOrientation ) {
-        
-        self.currentOrientaion = newOrientation;
-        
-        switch (newOrientation) {
-                
-            case UIDeviceOrientationPortrait :
-            {
-                
-                [self rotatePortrait];
-                
-                
-            }break;
-            case UIDeviceOrientationLandscapeLeft :
-            {
-
-                [self rotateLeft];
-                
-                
-            }break;
-            case UIDeviceOrientationLandscapeRight :
-            {
-
-                [self rotateRight];
-                
-            }break;
-            case UIDeviceOrientationPortraitUpsideDown :
-            {
-                [self rotateUpsideDown];
-                
-            }break;
-                
-            default:
-                break;
-        }
-
-        
-    }
-    
-}
+//-(void) handleDeviceOrientationChanged:(NSNotification *)notification{
+//    
+//    UIDeviceOrientation newOrientation = [[UIDevice currentDevice] orientation];
+//    
+//    if ( self.currentOrientaion != newOrientation ) {
+//        
+//        self.currentOrientaion = newOrientation;
+//        
+//        switch (newOrientation) {
+//                
+//            case UIDeviceOrientationPortrait :
+//            {
+//                
+////                [self rotatePortrait];
+//                
+//                
+//            }break;
+//            case UIDeviceOrientationLandscapeLeft :
+//            {
+//
+////                [self rotateLeft];
+//                
+//                
+//            }break;
+//            case UIDeviceOrientationLandscapeRight :
+//            {
+//
+////                [self rotateRight];
+//                
+//            }break;
+//            case UIDeviceOrientationPortraitUpsideDown :
+//            {
+////                [self rotateUpsideDown];
+//                
+//            }break;
+//                
+//            default:
+//                break;
+//        }
+//
+//        
+//    }
+//    
+//}
 
 -(void) rotatePortrait{
     
@@ -448,75 +438,77 @@
     
 }
 
--(void) rotateLeft{
-    
-    if (self.isFullScreen) {
-        
-        self.view.transform = CGAffineTransformIdentity;
-    }
-    
-    CGRect landFrame = [self getLandscapeFrame];
-    
-    [UIView animateWithDuration:0.35f animations:^{
-        
-        self.view.frame = landFrame;
-        self.view.transform = CGAffineTransformMakeRotation(M_PI_2);
-        
-    } completion:^(BOOL finished) {
-        
-        self.isFullScreen = YES;
-        
-        self.currentOrientaion = UIDeviceOrientationLandscapeLeft;
-        
-    }];
-}
-
 -(void) rotateRight{
-    
+
     if (self.isFullScreen) {
-        
+
         self.view.transform = CGAffineTransformIdentity;
     }
-    
+
     CGRect landFrame = [self getLandscapeFrame];
-    
+
     [UIView animateWithDuration:0.35f animations:^{
-        
+
         self.view.frame = landFrame;
-        
+
         self.view.transform = CGAffineTransformMakeRotation(-M_PI_2);
-        
+
     } completion:^(BOOL finished) {
-        
+
         self.isFullScreen = YES;
-        
+
         self.currentOrientaion = UIDeviceOrientationLandscapeRight;
 
-        
-    }];
-    
-}
 
--(void) rotateUpsideDown{
-    
-    self.view.transform = CGAffineTransformIdentity;
-    
-    [UIView animateWithDuration:0.35f animations:^{
-        
-        self.view.transform = CGAffineTransformMakeRotation(M_PI);
-        
-        self.view.frame = self.originalFrame;
-        
-    } completion:^(BOOL finished) {
-        
-        self.isFullScreen = NO;
-        
-        self.currentOrientaion = UIDeviceOrientationPortraitUpsideDown;
-
-        
     }];
 
 }
+
+
+//-(void) rotateLeft{
+//    
+//    if (self.isFullScreen) {
+//        
+//        self.view.transform = CGAffineTransformIdentity;
+//    }
+//    
+//    CGRect landFrame = [self getLandscapeFrame];
+//    
+//    [UIView animateWithDuration:0.35f animations:^{
+//        
+//        self.view.frame = landFrame;
+//        self.view.transform = CGAffineTransformMakeRotation(M_PI_2);
+//        
+//    } completion:^(BOOL finished) {
+//        
+//        self.isFullScreen = YES;
+//        
+//        self.currentOrientaion = UIDeviceOrientationLandscapeLeft;
+//        
+//    }];
+//}
+
+
+//-(void) rotateUpsideDown{
+//    
+//    self.view.transform = CGAffineTransformIdentity;
+//    
+//    [UIView animateWithDuration:0.35f animations:^{
+//        
+//        self.view.transform = CGAffineTransformMakeRotation(M_PI);
+//        
+//        self.view.frame = self.originalFrame;
+//        
+//    } completion:^(BOOL finished) {
+//        
+//        self.isFullScreen = NO;
+//        
+//        self.currentOrientaion = UIDeviceOrientationPortraitUpsideDown;
+//
+//        
+//    }];
+//
+//}
 
 -(CGRect) getLandscapeFrame{
     
