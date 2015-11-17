@@ -377,47 +377,6 @@
  */
 //-(void) handleDeviceOrientationChanged:(NSNotification *)notification{
 //    
-//    UIDeviceOrientation newOrientation = [[UIDevice currentDevice] orientation];
-//    
-//    if ( self.currentOrientaion != newOrientation ) {
-//        
-//        self.currentOrientaion = newOrientation;
-//        
-//        switch (newOrientation) {
-//                
-//            case UIDeviceOrientationPortrait :
-//            {
-//                
-////                [self rotatePortrait];
-//                
-//                
-//            }break;
-//            case UIDeviceOrientationLandscapeLeft :
-//            {
-//
-////                [self rotateLeft];
-//                
-//                
-//            }break;
-//            case UIDeviceOrientationLandscapeRight :
-//            {
-//
-////                [self rotateRight];
-//                
-//            }break;
-//            case UIDeviceOrientationPortraitUpsideDown :
-//            {
-////                [self rotateUpsideDown];
-//                
-//            }break;
-//                
-//            default:
-//                break;
-//        }
-//
-//        
-//    }
-//    
 //}
 
 -(void) rotatePortrait{
@@ -464,51 +423,6 @@
 
 }
 
-
-//-(void) rotateLeft{
-//    
-//    if (self.isFullScreen) {
-//        
-//        self.view.transform = CGAffineTransformIdentity;
-//    }
-//    
-//    CGRect landFrame = [self getLandscapeFrame];
-//    
-//    [UIView animateWithDuration:0.35f animations:^{
-//        
-//        self.view.frame = landFrame;
-//        self.view.transform = CGAffineTransformMakeRotation(M_PI_2);
-//        
-//    } completion:^(BOOL finished) {
-//        
-//        self.isFullScreen = YES;
-//        
-//        self.currentOrientaion = UIDeviceOrientationLandscapeLeft;
-//        
-//    }];
-//}
-
-
-//-(void) rotateUpsideDown{
-//    
-//    self.view.transform = CGAffineTransformIdentity;
-//    
-//    [UIView animateWithDuration:0.35f animations:^{
-//        
-//        self.view.transform = CGAffineTransformMakeRotation(M_PI);
-//        
-//        self.view.frame = self.originalFrame;
-//        
-//    } completion:^(BOOL finished) {
-//        
-//        self.isFullScreen = NO;
-//        
-//        self.currentOrientaion = UIDeviceOrientationPortraitUpsideDown;
-//
-//        
-//    }];
-//
-//}
 
 -(CGRect) getLandscapeFrame{
     
